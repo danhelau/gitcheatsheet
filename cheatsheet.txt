@@ -2,6 +2,7 @@ git status                  compare WORKING AREA with INDEX and also REPO
 git diff                    compare WORKING AREA with INDEX
 git diff --cached           compare INDEX with REPO
 git diff <b1> <b2>          diff (all files diffs) between branch 'b1' and branch 'b2'
+git diff HEAD HEAD~2        diff btw current commit and 2 commits earlier
 
 git add <filename>          1) move current version of file WA->INDEX 2) add manually merged file WA->INDEX
 
@@ -34,5 +35,14 @@ git reset --hard HEAD       removes all uncommitted changes from WA&INDEX
 
 git merge <otherb>          merge otherb to current branch
 
-git show <commit>           shows the commit changes
+
+git log --graph --decorate --oneline
+                            same as Intellij nice aligned tree
+
+git show <branch/tag/commit>
+git show HEAD^              shows the parent of current commit
+git show HEAD~n             moves n times down the tree
+git show HEAD~n^m           moves n times down the tree, select m-th parallel commit
+
+git blame <f>               file listing each line having commit ref
 
