@@ -1,1 +1,38 @@
-test
+git status                  compare WORKING AREA with INDEX and also REPO
+git diff                    compare WORKING AREA with INDEX
+git diff --cached           compare INDEX with REPO
+git diff <b1> <b2>          diff (all files diffs) between branch 'b1' and branch 'b2'
+
+git add <filename>          1) move current version of file WA->INDEX 2) add manually merged file WA->INDEX
+
+git commit -m ""            commit
+git commit                  finish merge process being in the middle of merge
+
+
+git branch                  show branches
+git branch <newb>           creates new branch newb pointing to current commit
+
+git checkout <b1>           changes: 1) HEAD point to specific commit (branch also is a commit); 2) moves data from REPO->WA&INDEX
+git checkout HEAD <unstaged changed file>
+                            copy file version REPO->WA&INDEX, in fact removes all uncommitted changes from WA&INDEX
+
+
+git rm --cached <file>      removes new file (or changes in file) from INDEX (-f removes it from both WA&INDEX)
+
+
+git mv <curfilename> <newfilename>
+                            renames file and alignes INDEX, so that git status shows rename op (git mv == mv f1 f2; git add f1)
+
+git reset <commit>          moves back in past to some other state of file(s)
+                            in REPO: moves current branch to point to new commit (doesn't move HEAD, it still points to cur branch). Detached commits will be GC-ed
+                            --hard: copy data state of the commit from REPO to both WA&INDEX
+                            --mixed (default): copy data from REPO to INDEX. WA untouched
+                            --soft: doesn't touch WA&INDEX
+git reset HEAD <f>          unstage file f. as --mixed is default, WA untouched
+git reset --hard HEAD       removes all uncommitted changes from WA&INDEX
+
+
+git merge <otherb>          merge otherb to current branch
+
+git show <commit>           shows the commit changes
+
